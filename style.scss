@@ -10,6 +10,17 @@ $blue: #373C52;
   padding: 0;
   box-sizing: border-box;
 }
+@keyframes grow{
+  0%{
+    transform: scale(1);
+  }
+  50%{
+    transform: scale(1.5);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
 html{
   font-size: 10px;
   font-family: $multi, sans-serif;
@@ -18,6 +29,8 @@ html{
 a{
   text-decoration: none;
   color: #fff;
+  font-family: $multi;
+  text-transform: uppercase;
 }
 ul{
   list-style-type: none;
@@ -25,12 +38,16 @@ ul{
 .container{
   width: 100%;
   height: auto;
-  max-width: 160rem;
+  max-width: 120rem;
   margin: 0 auto;
   padding: 1rem 1.5rem;
 }
+.section{
+  padding-top: 5rem;
+
+}
 .header{
-  position: absolute ;
+  position: fixed ;
   top: 0;
   left: 0;
   width: 100%;
@@ -43,7 +60,7 @@ ul{
     .logo{
       margin-top: 1rem;
       .logo-text{
-        
+        // text-transform: lowercase;
         font-family: $arizona;
         font-size: 3.5rem;
       }
@@ -100,7 +117,7 @@ ul{
       right: -100%;
       width: 70%;
       height: 100vh;
-      background-color: rgb(214, 214, 214);
+      background-color: rgba(214, 214, 214, 0.882);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -134,15 +151,60 @@ ul{
 .hero{
   width: 100%;
   height: 100vh;
-  overflow-y: hidden;
+  // overflow-y: hidden;
+  position: relative;
   .hero-background{
     width: 100%;
     height: 100vh;
     object-fit: cover;
-    object-position: center;
-    position: relative;
-    filter: blur(1px);
+    object-position: center
   }
+  .container{
+    padding-top: 20rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    .hero-welcome{
+      text-align: center;
+      .hero-heading{
+        font-size: 5rem;
+        font-family: $multi;
+        text-transform: uppercase;
+
+      }
+      .hero-text{
+        font-family: $arizona;
+        font-size: 3.5rem;
+        font-weight: 400;
+      }
+      .arrow{
+        display: inline-block;
+        font-size: 3rem;
+        margin-top: 20rem;
+        animation: grow 3s infinite ;
+      }
+      .time{
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-top: 8rem;
+        i{
+          font-size: 3rem;
+          padding-right: .5rem;
+          display: none;
+        }
+        .time-text{
+          display: inline-block;
+          font-size: 2.4rem;
+        }
+      }
+    }
+  }
+  
 }
 .hero::before{
   content: '';
@@ -151,19 +213,22 @@ ul{
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(32, 27, 27, 0.212);
-  z-index: 100;
+  background-color: rgba(32, 27, 27, 0.312);
+  z-index: 1;
 }
-@media screen and (min-width:768px){
+@media screen and (min-width:780px){
   .header{
     .nav{
       .logo{
+        margin-left: 2rem;
         margin-top: initial;
+        text-transform: none;
       }
       .burger{
         display: none;
       }
       .nav-list{ 
+        
         flex-basis: 60%;
         flex-direction: row;
         position: static;
@@ -173,8 +238,25 @@ ul{
         .nav-item{
           margin-right: 5rem;
           .nav-link{
+            font-size: 2rem;
             color: #fff;
             transition: .5s ease;
+            position: relative;
+          }
+          .nav-link::before{
+            content: '';
+            width: 100%;
+            height: 2px;
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            background-color: gold;
+            transform: scale(0);
+            transition: .5s ease;
+            transform-origin: left;
+          }
+          .nav-link:hover::before{
+            transform: scale(1);
           }
           .nav-link:hover{
             color: gold;
@@ -185,6 +267,7 @@ ul{
           margin-right: 0;
         }
         .social-container{
+          margin-top: .4rem;
           margin-left: 1.5rem;
           i{
             color: #fff;
@@ -198,4 +281,10 @@ ul{
       }
     }
   } 
+  .hero{
+    .container{
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
 }
