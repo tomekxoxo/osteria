@@ -58,7 +58,7 @@ ul {
       width: 4.5rem;
       height: 5rem;
       position: relative;
-      top: 1rem;
+      right: .5rem;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -94,9 +94,9 @@ ul {
       position: fixed;
       top: 0;
       right: -100%;
-      width: 70%;
+      width: 100%;
       height: 100vh;
-      background-color: rgba(214, 214, 214, 0.882);
+      background-color: rgba(214, 214, 214, 0.95);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -119,21 +119,18 @@ ul {
       right: 0; }
 
 .hero {
-  width: 100%;
-  height: 100vh;
-  position: relative; }
+  height: 100vh; }
   .hero .hero-background {
     width: 100%;
     height: 100vh;
     object-fit: cover;
-    object-position: center; }
-  .hero .container {
-    padding-top: 20rem;
+    object-position: center;
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    z-index: -2; }
+  .hero .container {
+    padding-top: 20rem;
     z-index: 5; }
     .hero .container .hero-welcome {
       text-align: center; }
@@ -172,7 +169,7 @@ ul {
   width: 100%;
   height: 100%;
   background-color: rgba(32, 27, 27, 0.312);
-  z-index: 1; }
+  z-index: -1; }
 
 @media screen and (min-width: 780px) {
   .header .nav .logo {
@@ -220,7 +217,4 @@ ul {
         font-size: 2rem;
         transition: color .5s ease; }
       .header .nav .nav-list .social-container i:hover {
-        color: gold; }
-  .hero .container {
-    left: 50%;
-    transform: translateX(-50%); } }
+        color: gold; } }

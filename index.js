@@ -9,7 +9,6 @@ function tellTime() {
   const element = document.querySelector('.time-text');
   const date = new Date().toString();
   const hour = date.substring(16,21);
-  console.log(hour);
   element.textContent = hour + ` we're close`;
 }
 tellTime();
