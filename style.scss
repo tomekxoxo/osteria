@@ -442,3 +442,8 @@ section:not(:first-of-type) {
     }
   }
 }
+@media screen and (max-width:370px){
+  html{
+    font-size: 8px;
+  }
+}
