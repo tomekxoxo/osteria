@@ -25,6 +25,7 @@ html {
   font-size: 10px;
   font-family: $multi, sans-serif;
   color: #fff;
+  scroll-behavior: smooth;
 }
 a {
   text-decoration: none;
@@ -45,10 +46,65 @@ ul {
 section:not(:first-of-type) {
   padding-top: 5rem;
   width: 100%;
-  min-height: 100vh;
+  min-height: 80vh;
   background-color: $bgColor;
 }
+
+.grid {
+  display: grid;
+  grid-gap: 5rem;
+  grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+  grid-auto-rows: 500px;
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 0 2rem;
+    font-family: $multi;
+    background-color: #fff;
+    text-align: center;
+    color: $blue;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    .card-title {
+      padding-top: 2rem;
+      font-size: 1.5rem;
+    }
+    .card-heading {
+      margin-top: 2rem;
+      font-size: 4rem;
+      font-weight: 700;
+    }
+    .card-text {
+      padding: 2rem 2rem 0;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.1rem;
+      line-height: 1.5;
+    }
+    .card-link {
+      display: inline-block;
+      font-size: 2.5rem;
+      color: #d6a10f;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      position: relative;
+    }
+    .card-link::before {
+      content: "";
+      width: 60%;
+      height: 3px;
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #d6a10f;
+    }
+  }
+}
+
 .header {
+  transition: background-color .5s ease;
   position: fixed;
   top: 0;
   left: 0;
@@ -149,6 +205,9 @@ section:not(:first-of-type) {
     }
   }
 }
+.header.scroll{
+  background-color: $blue;
+}
 .hero {
   height: 100vh;
   // overflow-y: hidden;
@@ -215,96 +274,110 @@ section:not(:first-of-type) {
 }
 .recipes {
   padding-bottom: 0;
-  .grid {
-    display: grid;
-    grid-gap: 5rem;
-    grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
-    grid-auto-rows: 500px;
-    .card {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+  .grid-image {
+    background: url("images/book.jpg") center no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
 
+.menu {
+  padding-bottom: 5rem;
+  .menu-image {
+    background: url("images/soup.jpg") center no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .image-heading {
+      z-index: 2;
+      font-size: 8rem;
+      font-family: $arizona;
+      font-weight: 300;
+    }
+    .image-title {
+      z-index: 2;
       font-family: $multi;
-      background-color: #fff;
+      font-size: 8rem;
+      text-transform: uppercase;
+    }
+  }
+  .menu-image:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(32, 27, 27, 0.312);
+    z-index: 1;
+  }
+  .container {
+    .grid {
+      padding-top: 5rem;
+      .grid-image {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 2rem;
+        .image-1{
+          background: url('images/book.jpg') center no-repeat;
+          background-size: cover;
+        }
+        .image-2{
+          background: url('images/grill.jpg') center no-repeat;
+          background-size: cover;
+        }
+        .image-3{
+          background: url('images/powder.jpg') center no-repeat;
+          background-size: cover;
+        }
+        .image-4{
+          background: url('images/soup.jpg') center no-repeat;
+          background-size: cover;
+        }
+      }
+    }
+  }
+}
+.footer{
+  .container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .footer-text{
+      padding: 3rem 0;
+      // text-transform: uppercase;
       text-align: center;
       color: $blue;
-      text-transform: uppercase;
-      letter-spacing: 0.2rem;
-      .card-title {
-        padding-top: 2rem;
-        font-size: 1.5rem;
-      }
-      .card-heading {
-        margin-top: 2rem;
-        font-size: 3rem;
-        font-weight: 600;
-      }
-      .card-text {
-        padding: 2rem 2rem 0;
-        font-size: 1.5rem;
-        font-weight: 600;
-        letter-spacing: 0.2rem;
-        line-height: 1.5;
-      }
-      .card-link {
-        display: inline-block;
-        font-size: 2.5rem;
-        color: rgb(214, 161, 15);
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-      }
-    }
-    .grid-image {
-      background: url("images/book.jpg") center no-repeat;
-      background-size: cover;
-      width: 100%;
-      height: 100%;
-    }
-  }
-}
-.menu{
-  .container{
-    max-width: 100%;
-    margin: 0 auto;
-    padding:  initial;
-    .menu-image{
-      background: url('images/soup.jpg') center no-repeat;
-      background-size: cover;
-      width: 100%;
-      height: 100vh;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      
-      .image-heading{
-        z-index: 2;
-        font-size:  8rem ;
-        font-family: $arizona;
-        font-weight: 300;
-      }
-      .image-title{
-        z-index: 2;
-        font-family: $multi;
-        font-size: 8rem;
+      font-size: 1.5rem;
+      span{
         text-transform: uppercase;
+        font-family: $arizona;
       }
+      
     }
-    .menu-image:before{
-      content: '';
+    .arrow{
       position: absolute;
+      // position: relative;
       top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(32, 27, 27, 0.312);
-      z-index: 1;
+      left: 50%;
+
+      animation: grow 3s infinite;
+      i{
+        font-size: 2rem;
+        color:$blue;
+        
+      }
     }
   }
 }
-
 @media screen and (min-width: 780px) {
   .header {
     .nav {
